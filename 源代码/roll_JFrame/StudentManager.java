@@ -9,7 +9,6 @@ public class StudentManager {
 	public static boolean runSignal=false;
 	private int stopTime=20000;
 	private int maxTime=20000,minTime=15000;
-	private final String[] music={"goodluck.wav","excite.wav"};
 	public void setStopTime(int time) {stopTime=time*1000;}
 	public void setMaxTime(int time) {maxTime=time*1000;}
 	public StudentManager(JLabel tf) {
@@ -29,13 +28,13 @@ public class StudentManager {
 				while(true) {
 					System.out.println(runSignal);
 					if (StudentManager.runSignal) {
-						int time=(int)Math.random()*(maxTime-minTime)+minTime;
+						int time=(int)(Math.random()*(maxTime-minTime)+minTime);
 						int i;
 						//************************
-						Audiotest at=new Audiotest("music/"+music[(time%100)>50?1:0]);
+						Audiotest at=new Audiotest("music/"+(((int)(Math.random()*(100-1)+1))%2)+".wav");
 						at.start();
 						//************************
-						for(i=(int)Math.random()*(list.size()-1-0)+0;time>0;i++) {
+						for(i=(int)(Math.random()*(list.size()-1-0)+0);time>0;i++) {
 							if(!runSignal)
 								break;
 							int get=i%(list.size());
